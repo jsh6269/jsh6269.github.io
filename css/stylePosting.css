@@ -1,6 +1,6 @@
 #posting{
     background-color: white;
-    width: 950px;
+    width: 985px;
     /*height: 1120px;*/
     display: inline-block;
     vertical-align: top;
@@ -11,18 +11,23 @@
 }
 #posting h1{
     text-decoration: none;
-    margin-left: 5px;
+    margin-left: 14px;
+    margin-top: 5px;
     color: rgb(0,0,100);
 }
 #posting h2{
     padding-top: 10px;
-    padding-left: 20px;
+    padding-left: 30px;
     padding-bottom: 3px;
     margin-bottom: 5px;
     font-size: 1.6em;
 }
+#posting h4{
+    padding-left: 15px;
+}
+
 #posting p.date{
-    padding-left: 24px;
+    padding-left: 35px;
     padding-top: 3px;
     font-size: 0.9em;
     margin-bottom: 5px;
@@ -30,7 +35,7 @@
 #posting p:not(.date){
     line-height: 22px;
     padding-top: 15px;
-    padding-left: 20px;
+    padding-left: 35px;
     padding-bottom: 3px;   
 }
 table {
@@ -39,7 +44,7 @@ table {
     table-layout: fixed;
     width: 904px;
     font-size: 0.8em;
-    margin-left: 20px;
+    margin-left: 35px;
 }
 th, td{
     line-height: 1.5em;
