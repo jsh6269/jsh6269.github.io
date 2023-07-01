@@ -146,7 +146,7 @@ footer p:last-child{
 #body_section{
     margin-top: 20px;
     background-color: #EFEFEF;
-    height: 1200px;
+    /* height: 1200px; */
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 }
@@ -191,15 +191,16 @@ footer p:last-child{
     color: #ED5EDD;
 }
 #article_section{
-    width: 1000px;
-    height: 850px;
+    /*width: 1000px;
+    height: 850px;*/
     margin-left: 60px;
     margin-top: 30px;
+    margin-bottom: 30px;
 }
 #article_section article{
     height: 150px;
     margin-top: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 #article_section img{
     clear: both;
@@ -245,4 +246,11 @@ footer p:last-child{
 }
 .article_desc h2:hover{
     text-decoration: underline;
+}
+
+#posting p{
+    margin-right: 30px;
+}
+#posting p:last-child {
+    margin-bottom: 40px;
 }
