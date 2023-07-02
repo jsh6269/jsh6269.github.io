@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    line-height: 1em;
+}
+#wrapper{
+    margin: 0 auto;
+    width: 1400px;
+    overflow-x: hidden;
+}
+#title{
+    margin-top: 30px;
+    margin-left: 40px;
+    /* border: solid gray; */
+}
+#main_title h2{
+    margin-top: 15px;
+    margin-left: 3px;
+    font-size: 14px;
+    font-weight:400;
+    color: gray;
+}
+#trainer{
+    display: inline-block;
+    /* height: 800px; */
+    float: left;
+    margin-top: 20px;
+    margin-left: 40px;
+    /* border: solid gray; */
+}
+#trainer img:not(#frTrainer){
+    width: 500px;
+    height: 600px;
+}
+#frTrainer{
+    width: 550px;
+    height: 400px;
+    margin-top:100px;
+}
+#p1, #p2, #p3, #p4, #p5, #p6{
+    display: inline-block;
+    float: left;
+    /* border: solid black; */
+    width: 180px;
+    height: 320px;
+}
+#p1, #p4{
+    margin-left: 80px;
+}
+#p2, #p3, #p5, #p6{
+    margin-left: 50px;
+}
+
+#pokemon{
+    display: inline-block;
+    /* margin-left: 70px; */
+    width: 740px;
+    /* margin-top: 10px; */
+    /* height: 800px; */
+    /* border: solid gray; */
+}
+#pokemon img{
+    width: 170px;
+    height: 160px;
+}
+.name {
+    margin-top: 6px;
+    margin-left: 12px;
+}
+.type {
+    margin-top: 6px;
+    margin-left: 12px;
+}
+.type div{
+    display: inline-block;
+    font-size: 13px;
+    width: 50px;
+    text-align: center;
+    border-radius: 10%;
+    padding: 2px;
+    color: white;
+    font-weight: bold;
+}
+.skill1 {
+    display: inline-block;
+    width: 160px;
+    margin-top: 10px;
+    margin-left: 6px;
+}
+.skill {
+    display: inline-block;
+    width: 160px;
+    margin-top: 6px;
+    margin-left: 6px;
+}
+#pokemon span{
+    display: inline-block;
+    width: 32px;
+    font-size: 10px;
+    text-align: center;
+    vertical-align: 0.2em;
+    padding: 2px;
+    border-radius: 14%;
+    color: white;
+}
+.normal {background-color: #A8A878;} .fire {background-color: #F08030;}
+.water {background-color: #6890F0;} .electric {background-color: #F8D030;}
+.grass {background-color: #78C850;} .ice {background-color: #98D8D8;}
+.fighting {background-color: #C03028;} .poison {background-color: #A040A0;}
+.ground {background-color: #E0C068;} .flying {background-color: #A890F0;}
+.psychic {background-color: #F85888;} .bug {background-color: #A8B820;}
+.rock {background-color: #B8A038;} .ghost {background-color: #705898;}
+.dragon {background-color: #7038F8;} .dark {background-color: #705848;}
+.metal {background-color: #B8B8D0;} .fairy {background-color: #EE99AC;}
