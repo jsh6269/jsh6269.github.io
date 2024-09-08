@@ -13,15 +13,19 @@ const Header = () => {
       className="w-[1400px] h-[242px] mt-[12px] mb-[20px] relative"
       style={background}
     >
-      <h1 className="text-[#CCCCFF] text-6xl font-medium">다시금의 블로그</h1>
-      <h2 className="text-[#CCCCFF] text-3xl">#상상력이 부족해</h2>
+      <h1 className="text-[#CCCCFF] text-5xl font-medium mt-[50px] ml-[40px]">
+        장수한의 블로그
+      </h1>
+      <h2 className="text-[#CCCCFF] text-2xl mt-[12px] mb-[35px] ml-[40px]">
+        Jang, Suhan
+      </h2>
 
       <nav>
-        <ol className="flex space-x-4">
+        <ol className="flex space-x-6">
           <Link to="/">
-            <li className="text-[#FFFFFF]">Home</li>
+            <li className="text-[#FFFFFF] ml-[40px] text-xl">Home</li>
           </Link>
-          <li className="text-[#FFFFFF]">
+          <li className="text-[#FFFFFF] ml-[40px] text-xl">
             <a href="https://github.com/jsh6269">GitHub</a>
           </li>
         </ol>

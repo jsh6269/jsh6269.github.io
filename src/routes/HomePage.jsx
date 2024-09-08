@@ -4,7 +4,7 @@ const HomePage = () => {
   return (
     <div className="w-[1024px]">
       <Link to="/post/it/1">
-        <p className="text-4xl">sample post</p>
+        <p className="text-4xl mt-10">sample post</p>
       </Link>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import bgTile from "../../assets/images/bg.gif";
-import profile from "../../assets/images/profile.png";
+import profile from "../../assets/images/profile.jpg";
 import postTree from "../../tree.json";
 import { Link } from "react-router-dom";
 
@@ -13,19 +13,25 @@ const Aside = () => {
   return (
     <div className="w-[290px] m-[30px] relative">
       <section className="mb-[20px]" style={background}>
-        <img src={profile} className="w-[200px]" />
-        <h1>다시금 (once again)</h1>
-        <p>
-          "Life is short, we need python." 이 문구에 깊은 감명을 받아 Computer
-          Engineering을 공부 하게 된 평범한 공대생입니다. 득도하는 날까지 앞으로
-          전진!
-        </p>
+        <div className="flex flex-col items-center p-[20px]">
+          <img src={profile} alt="profile" className="w-[200px]" />
+        </div>
+        <div className="ml-[48px] pb-[40px]">
+          <h1 className="text-lg mb-[5px]">장수한 (jsh6269)</h1>
+          <p>
+            평범한 컴공 학부생
+            <br />
+            종강만 바라보고 산다.
+          </p>
+        </div>
       </section>
       <section style={background}>
-        <ol>
+        <ol className="py-[20px]">
           {tabs.map((key) => (
             <Link to={`list/${key}`}>
-              <li key={key}>{key}</li>
+              <li className="ml-[40px] py-[2px]" key={key}>
+                {key}
+              </li>
             </Link>
           ))}
         </ol>
