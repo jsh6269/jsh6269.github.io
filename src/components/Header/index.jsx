@@ -1,5 +1,6 @@
 import React from "react";
 import title from "../../assets/images/title_pic.jpg";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const background = {
@@ -17,8 +18,12 @@ const Header = () => {
 
       <nav>
         <ol className="flex space-x-4">
-          <li className="text-[#FFFFFF]">Home</li>
-          <li className="text-[#FFFFFF]">GitHub</li>
+          <Link to="/">
+            <li className="text-[#FFFFFF]">Home</li>
+          </Link>
+          <li className="text-[#FFFFFF]">
+            <a href="https://github.com/jsh6269">GitHub</a>
+          </li>
         </ol>
       </nav>
     </div>

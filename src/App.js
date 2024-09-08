@@ -15,8 +15,8 @@ function App() {
           <Aside />
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/post" element={<PostPage />} />
-            <Route path="/list" element={<ListPage />} />
+            <Route path="/post/:category/:num" element={<PostPage />} />
+            <Route path="/list/:category" element={<ListPage />} />
           </Routes>
         </div>
       </BrowserRouter>

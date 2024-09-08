@@ -1,11 +1,14 @@
 import React from "react";
 import bgTile from "../../assets/images/bg.gif";
 import profile from "../../assets/images/profile.png";
+import postTree from "../../tree.json";
+import { Link } from "react-router-dom";
 
 const Aside = () => {
   const background = {
     backgroundImage: `url(${bgTile})`,
   };
+  const tabs = Object.keys(postTree);
 
   return (
     <div className="w-[290px] m-[30px] relative">
@@ -20,11 +23,11 @@ const Aside = () => {
       </section>
       <section style={background}>
         <ol>
-          <li>IT Project</li>
-          <li>IT Project</li>
-          <li>IT Project</li>
-          <li>IT Project</li>
-          <li>IT Project</li>
+          {tabs.map((key) => (
+            <Link to={`list/${key}`}>
+              <li key={key}>{key}</li>
+            </Link>
+          ))}
         </ol>
       </section>
     </div>
