@@ -1,4 +1,18 @@
 {
-  "it": [1, 2],
-  "hobby": [1]
+    "Hobby": [
+        {
+            "key": "1",
+            "title": "hobby-1"
+        }
+    ],
+    "IT": [
+        {
+            "key": "1",
+            "title": "IT-1"
+        },
+        {
+            "key": "2",
+            "title": "IT-2"
+        }
+    ]
 }
