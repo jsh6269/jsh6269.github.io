@@ -1,9 +1,11 @@
 import os
 import json
 from bs4 import BeautifulSoup
+from datetime import datetime
 
 def extract_title_from_html(file_path):
     """Extract title from an HTML file."""
+    print(file_path)
     with open(file_path, 'r', encoding='utf-8') as file:
         soup = BeautifulSoup(file, 'html.parser')
         title = soup.title.string if soup.title else 'No title found'
@@ -20,14 +22,18 @@ def create_json_from_html(base_dir):
             result[category] = []
             
             for key in os.listdir(category_path):
-                key_path = os.path.join(category_path, key, 'index.html')
-                
-                if os.path.isfile(key_path):
-                    title = extract_title_from_html(key_path)
-                    result[category].append({"key": key, "title": title})
+                keypath = os.path.join(category_path, key)
+                for filename in os.listdir(keypath):
+                    full_path = os.path.join(keypath, filename)
+                    new_path = os.path.join(keypath, 'index.html')
+                    if os.path.isfile(full_path) and '.html' in full_path:
+                        os.rename(full_path, new_path)
+                        title = extract_title_from_html(new_path)
+                        created_time = datetime.fromtimestamp(os.path.getctime(new_path)).strftime('%Y-%m-%d')
+                        result[category].append({"id": key, "title": title, "date": str(created_time)})
 
             # Sort the list by 'key'
-            result[category].sort(key=lambda x: x['key'])
+            result[category].sort(key=lambda x: x['id'])
 
     return result
 
