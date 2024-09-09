@@ -28,11 +28,9 @@ const Aside = () => {
       <section style={background}>
         <ol className="py-[20px]">
           {tabs.map((key) => (
-            <Link to={`list/${key}`}>
-              <li className="ml-[40px] py-[2px]" key={key}>
-                {key}
-              </li>
-            </Link>
+            <li className="ml-[40px] py-[2px]" key={key}>
+              <Link to={`list/${key}`}>{key}</Link>
+            </li>
           ))}
         </ol>
       </section>

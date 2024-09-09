@@ -22,9 +22,9 @@ const Header = () => {
 
       <nav>
         <ol className="flex space-x-6">
-          <Link to="/">
-            <li className="text-[#FFFFFF] ml-[40px] text-xl">Home</li>
-          </Link>
+          <li className="text-[#FFFFFF] ml-[40px] text-xl">
+            <Link to="/">Home</Link>
+          </li>
           <li className="text-[#FFFFFF] ml-[40px] text-xl">
             <a href="https://github.com/jsh6269">GitHub</a>
           </li>
