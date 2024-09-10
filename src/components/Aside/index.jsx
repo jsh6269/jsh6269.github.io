@@ -25,7 +25,7 @@ const Aside = () => {
           </p>
         </div>
       </section>
-      <section style={background}>
+      <section style={background} className="min-h-[400px]">
         <ol className="py-[20px]">
           {tabs.map((key) => (
             <li className="ml-[40px] py-[2px]" key={key}>
