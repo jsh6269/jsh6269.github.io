@@ -1,5 +1,7 @@
 # 블로그
-<img width="698" alt="image" src="https://github.com/user-attachments/assets/3cc62d02-f765-4323-ba02-c75702f9e45d">  
+<img width="400" height="380" alt="image" src="https://github.com/user-attachments/assets/3cc62d02-f765-4323-ba02-c75702f9e45d">  
+<img width="400" height="380" alt="image" src="https://github.com/user-attachments/assets/d6df7045-1617-424d-9deb-13f2a6d8c118">
+
 
 ## 특징
 - 약간 옛날 감성이 나는 디자인
