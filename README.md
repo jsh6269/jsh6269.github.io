@@ -1,7 +1,11 @@
 # 블로그
-- 옛날 감성이 나는 디자인
+<img width="698" alt="image" src="https://github.com/user-attachments/assets/3cc62d02-f765-4323-ba02-c75702f9e45d">  
+
+## 특징
+- 약간 옛날 감성이 나는 디자인
+  - 2010년대 감성
   - 네모네모하게!
-- 커뮤니티 게시판 디자인으로 구성
+  - 커뮤니티 게시판 느낌
 
 ## 실행 방법
 ```bash
@@ -9,6 +13,7 @@ git clone https://github.com/jsh6269/jsh6269.github.io.git
 npm install
 npm start
 ```
+
 ## 게시글 올리기
 아래와 같은 방법으로 게시글 파일을 넣어주면 자동으로 웹 페이지에 반영됨
 1. notion에 글 작성
