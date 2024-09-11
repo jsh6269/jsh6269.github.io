@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Git 명령어</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(249, 228, 188, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="052e586d-0cbf-410e-ab04-b87c3ed0663a" class="page sans"><header><h1 class="page-title">Git 명령어</h1><p class="page-description"></p></header><div class="page-body"><p id="57413549-627b-49af-9a41-12f1f0fb1331" class="">git add index.htm : index.htm을 working directory에서 stage로 옮김 (untracked ⇒ tracked)</p><p id="c24b159c-091e-4b61-93af-357742b00bff" class="">git add . : 전체 파일을 추적 상태로 등록</p><p id="8203290e-8e07-456b-a5e1-045bac0127f2" class="">git status : 커밋할 내용이 있는지, 수정된 파일이 있는지 등, 깃의 상태 메시지를 출력</p><p id="59979d8e-9117-440f-8c1e-ec57b43b0d5b" class="">mkdir gitstudy01</p><p id="9990b7f4-dee2-4497-b1f0-df1afbd7037c" class="">cd gitstudy01</p><p id="b3664885-4e68-472b-af0d-00046222482d" class="">git init : 저장소를 git으로 초기화</p><p id="f6b73416-dba8-495b-88a3-b30b924bd3b6" class="">cat index.htm</p><p id="20b5fae9-0f5f-4964-a537-4df9208c92d8" class="">code index.htm</p><p id="f29eb4cb-78f5-49c8-abe9-2b04b2f56f03" class="">rm index.htm : index.htm 삭제</p><p id="de6a0ce7-aa0d-4e3a-a416-c031e97878d2" class="">rm -f index.htm : index.htm 강제로 삭제</p><p id="a658c4f4-91a5-4ee6-b28e-4991528f1130" class="">git mv index.htm home.htm : index.htm의 이름을 home.htm으로 바꿈</p><p id="28adad8a-8884-46cd-b38c-b05fd59bbc16" class="">git rm --cached index.htm : 한번도 커밋하지 않은 stage 영역에 있는 파일을 unstage함</p><p id="26f495e3-b554-47cd-a104-6871371f9621" class="">git commit</p><p id="fa5c38b1-aff2-45d9-b174-023f7064c2dc" class="">git commit -m &quot;first commit&quot;</p><p id="1a05628e-64d3-4763-b0dd-1e7003cd5290" class="">git commit -am &quot;second commit&quot;</p><p id="3cf68a16-77e5-45fa-927c-2562cb4c89d6" class="">git commit --allow-empty-message -m &quot;&quot;</p><p id="c1ea077d-4a2f-4d14-8201-f936cf2480fe" class="">git commit -v : 이전과 달라진 영역의 내용을 ‘보면서(감상하면서)’ 커밋 메시지를 입력가능</p><p id="03d57311-e189-43b4-944d-9e1d795ce686" class="">git log</p><p id="8d3a3f10-1769-46bf-97b3-536587df6637" class="">git log --graph --all</p><p id="c967a7fd-ff3c-421a-a614-79681821369a" class="">git log index.htm : index.htm에 관한 로그만 출력</p><p id="82f2480e-8601-4124-bc86-8864c227f530" class="">git log --oneline : 7자리 커밋해시와 커밋 메시지를 묶어 한 줄씩 표현하여 출력</p><p id="bd3defd6-138e-4e43-a96a-bb8bdbd9d257" class="">git log --graph --oneline : 위의 사항을 그래프로 도식화하여 출력</p><p id="43dbec76-ad45-465a-a2e4-3220f4ab9d4c" class="">git diff : stage 영역과 working directory를 비교함</p><p id="99d1e40a-47c5-4945-83ac-7fcad58bfae9" class="">git diff head : 최신 커밋과 변경 내용을 비교</p><p id="d2d83a97-1604-4d0a-97ab-ae1506ea8f3f" class="">git remote add origin https://github.com/suhan8984/gitstudy01.git</p><p id="413d6e44-b58b-440d-942e-6c57f954771e" class="">git remote -v : 원격 저장소 목록 확인(fetch, push 주소를 출력함)</p><p id="ec466cd1-ff9c-49ce-813d-ecd1228a69db" class="">git remote show origin : 보다 상세한 원격 저장소 정보를 출력</p><p id="74f1739b-da01-48ee-9284-a4028e7385b8" class="">git remote rm origin : 원격 저장소 삭제</p><p id="7f740b3c-480b-4797-bbda-2aaa1e4bfd90" class="">git remote rename original origin : 원격 저장소 별칭을 original에서 origin으로 바꿈</p><p id="67689dfe-6507-4b11-b367-86bd1dc331d6" class="">git push origin master : master 브랜치를 원격 저장소에 전송함</p><p id="5f0d0ea4-2a4c-4c7b-9ba5-63933f376f55" class="">git clone https://github.com/suhan8984/gitstudy02.git</p><p id="68442d0b-e8f0-40b1-9bf0-6281fe99eb8e" class="">: 저장소를 복제하여 서버에 있는 모든 커밋 이력을 내려받음</p><p id="2e1d8e8d-2d3a-4dd2-b274-9e14e9801c73" class="">단, 트래킹 브랜치만 가져옴</p><p id="246d36eb-0b89-44d8-b5fb-63ae5f5a3858" class="">git pull : 서버에서 갱신된 새 커밋을 내려받음</p><p id="f8095555-b029-4e08-905e-6e7df35a5e06" class="">git fetch : 커밋을 가지고 오긴 하지만 로컬 저장소에 반영하지 않음</p><p id="414f9752-e230-43ef-a560-7c2c6c35e546" class="">git merge origin/master 를 이용하여 로컬 저장소에 반영</p><ul id="5ee53425-0a64-4628-9421-4bcc1b62a9c2" class="bulleted-list"><li style="list-style-type:disc">협업할 때에는 pull ⇒ coding ⇒ commit ⇒ pull ⇒ push 순서를 권장</li></ul><p id="4140ed54-76de-41b6-bfca-6dc148a12587" class="">git branch : branch 이름들의 목록을 보여줌 (현재 브랜치에 하이라이트 표시됨)</p><p id="1cb31a0c-e9cd-438c-bf79-6ee151518513" class="">git branch -v : 각 브랜치의 상세 정보 출력(이름, 가장 최근 커밋 해시, 해당 커밋 메시지)</p><p id="a0c91b3b-5a47-4495-94ef-a3418f1738dc" class="">git branch footer : footer 브랜치 생성</p><p id="1fc8bf1e-ac38-4304-86aa-4b8f9484b277" class="">git rev-parse footer : footer 브렌치의 head(가장 최근 말단)가 위치한 커밋 해시 값 출력</p><p id="8e081133-4d23-4539-9b90-945fa224a682" class="">git checkout footer : footer 브랜치로 이동(워킹 디렉토리도 같이 바뀜)</p><p id="ab9e6ac9-8bb9-428b-ab99-c6ca37a7d351" class="">git checkout -b footer : footer 브랜치를 생섬함과 동시에 footer 브랜치로 이동</p><p id="727512d2-bb86-4be4-aa44-612321a0eb4d" class="">git checkout dcdb1c1 : dcdb1c1을 해시키로 갖는 커밋으로 이동</p><p id="8d92a7a3-c01a-4a2b-a535-ae7ced090e77" class="">git checkout HEAD~1 : Head의 바로 전 커밋으로 이동</p><p id="dcd3ba76-f4f7-4656-b155-9e178a5a801a" class="">git checkout - : 이전 커밋(브랜치)로 이동</p><p id="7bf2501d-e7ef-4d39-90f3-87d9932da8b9" class="">git push -u origin hotfix : hotfix를 원격 서버로 전달</p><p id="5a16ab11-7514-4615-ab8d-702e070a4ea7" class="">git push -u origin feature:function</p><p id="c53469fa-9f8e-4ba8-9da3-fc80d94dfd6e" class="">⇒ feature 브랜치를 function 브랜치로 이름을 바꿔 푸시</p><p id="f642727b-f659-4fcd-96d1-077b7b2264aa" class="">upstream tracking 정보를 생성하므로 -u를 쓰는 것을 권장</p><p id="fc252f9a-1f17-466d-9a6b-61ede94a7b75" class="">git branch -r : 리모트 브랜치 목록을 출력</p><p id="fd12ee01-34d8-4a2e-9021-df24264db6d6" class="">git branch -vv : 트래킹 브랜치 목록을 출력</p><p id="019d9b02-ff6b-49c4-a586-c10fbef2e6b0" class="">git checkout --track origin/function : 업스트림 브랜치 function을 생성 (원격 저장소에 function을 tracking하는 로컬 저장소의 function 브랜치를 만들어 그곳으로 이동)</p><p id="7f5d689d-494b-4cf7-93bf-98f316b0c768" class="">git fetch, git checkout -b aaa origin/aaa : 원격 저장소에서 aaa를 origin/aaa로 fetch를 통해 받아온 다음 로컬저장소에 aaa 브랜치를 만들어 origin/aaa를 적용하고 그 브랜치로 checkout한다.</p><p id="3f74b4d0-4e04-4f64-8410-f6e3283bafc0" class="">git branch -u origin/bbb : 현재 브랜치를 원격 저장소의 브랜치 bbb와 업스트림 설정</p><p id="ecd6c36d-e004-49b9-ade9-7256e00123d2" class="">git push --set-upstream origin master : 현재 master 브랜치를 origin 서버의 master로 업스트림 설정</p><p id="9aa1c44d-cf8d-4740-b8ee-3b78a3ee1a62" class="">git branch -d bug : bug 브랜치를 삭제(스테이지 상태가 깨끗해야 삭제 가능)</p><p id="e4913eb2-97c8-4f72-a773-13f34c54e0c1" class="">git branch -D hotfix : hotfix 브랜치를 강제로 삭제</p><p id="f08cbc50-0476-497e-81c3-f26e1206b8c1" class="">git push origin --delete aaa : 원격 저장소의 브랜치 aaa를 삭제함</p><p id="58f3b8f8-3505-4369-ae6e-7db204956a3f" class="">git stash : 작업 중인 내역을 스택에 저장함</p><p id="7325a785-a9ab-4386-972e-2dda5c226e0f" class="">git stash list : 스태시에 저장된 스택을 확인</p><p id="e60beb51-1333-4140-9313-a04925fef7f2" class="">git stash show : 방금 전의 스태시와 현재 워킹 디렉터리 간 차이를 출력</p><p id="67fd8534-7000-401c-81e7-5ca9d235161d" class="">git stash show -p stash@{0} : 스택 0번지에 저장된 스태시와 현재 워킹 디렉터리간 차이를 상세하게 출력</p><p id="9c9c1c39-9b17-462b-88de-ed8c454478e7" class="">git stash pop : 스태시의 스택에 저장된 작업 내용이 적용(병합)됨. 병합에 성공하면 스택에서 제거</p><p id="ccb3f71c-e485-46f8-80c2-3ab1b4bbf27d" class="">git stash apply stash@{1} : apply는 스택 목록의 중간 작업을 지정하여 적용할 수 있음. 병합에 성공해도 스택에서 제거하지 않음</p><p id="94365a62-2a0f-48b4-88cb-19fdc00e3510" class="">git stash drop : 가장 최근의 스태시 삭제</p><p id="2498461f-4966-4945-add0-4287ce99db51" class="">git clean : untracked 상태의 파일을 삭제</p><p id="3dc72c3c-d4a5-4d39-9716-251afc0314bc" class="">git clean -f : 강제로 untracked 파일 삭제</p><p id="a647648f-e580-43b8-a719-be7fa276f8f9" class="">(master) git merge feature : feature 브랜치를 master에 병합</p><p id="29f02d1c-cc5b-44ab-be0d-c5469b244a44" class="">git reset --hard HEAD^ : 직전에 병합을 한 경우 이를 취소</p><p id="f5555fcd-6946-410a-be83-dcb1748cc53e" class="">git merge hotfix --edit : 병합 커밋 메시지를 직접 작성하려고 하는 경우 --edit 추가</p><p id="90addfc0-2cf6-4b77-a451-96f57da91263" class="">git branch -d hotfix : 병합 후 필요없어진 브랜치 hotfix를 삭제</p><p id="f4a51c24-1075-4e3e-b976-79942ec0870c" class="">git merge --abort : 병합하려고 했는데 충돌이 일어나서 병합을 취소하고 싶을 때</p><p id="eef184f2-df18-418c-94e0-6cb6f58bcb61" class="">⇒ 충돌이 일어난 경우 수동으로 직접 해결하고 커밋하면 됨</p><p id="f331bf2c-78a0-4972-a51b-0f2bb15b8ff9" class="">git branch --merged : 병합한 브랜치 출력</p><p id="249ad7f7-3be4-4f84-87a6-4563d2c8411b" class="">git branch --no-merged : 병합하지 않은 브랜치 출력</p><p id="a088fa93-6a89-4c59-a52b-b1a43031ee8d" class="">(description) git rebase master : 파생 브랜치에서 메인 브랜치를 rebase해야함 파생 브랜치의 head가 메인보다 앞으로 나가있어서 fast-forward 병합필요</p><p id="541fcf47-650d-43fb-85e4-d90fcedb78e9" class="">git checkout master</p><p id="d41b7474-313b-4386-9883-f896007384f3" class="">git merge description : fast-forward 방식으로 병합 진행</p><p id="d921e688-13d7-4341-b6b5-a3be31a11655" class="">충돌이 발생한 경우 수동으로 직접 수정한다음 stage등록, git rebase --continue를 이용해서 충돌된 부분들을 한 단계씩 해결해 나가면서 병합</p><p id="6d2f68c9-bc5a-429b-984e-bb30ded1adda" class="">마찬가지로 필요없어진 description 브랜치는 제거</p><p id="5f1a8545-cb5d-4aff-ae63-c2c13fc1ae52" class="">git rebase --abort : 직전 rebase 취소</p><p id="cc4f5a69-6b8f-43eb-b764-329a6129483f" class="">git rebase -i HEAD~3 를 한 다음 두 번째부터 마지막 줄의 pick를 squash로 바꾸면 커밋 3개를 하나의 커밋으로 묶을 수 있음. 커밋 해시값이 바뀜</p><p id="1d3bba2b-92ba-4e38-b73f-b8d285d0a47a" class="">⇒ 저장소를 외부에 공개했다면 리베이스는 하지 않는 것이 원칙</p><p id="9394bb9b-f935-4c65-bc15-966aca9c916a" class="">git reset --soft HEAD~2 : 1, 2, 3, 4, 5 순으로 커밋을 했다면 3의 커밋지점으로 돌아가고 스테이지 영역에는 4, 5 또한 수행된 파일이 올라가며, 워킹디렉터리를 수정하지는 않기 때문에 5를 커밋한 이후에 진행된 수정사항은 워킹디렉터리상에 보존이 된다. (파일 자체는 수정사항이 그대로라는 뜻)</p><p id="f730a8da-52fd-42d2-812a-2dcc842ef472" class="">git reset --mixed HEAD~2 (--mixed가 기본값이므로 생략해도 무방) :</p><p id="03fef95c-d19f-4ab4-8042-e3477ce0fb26" class="">1, 2, 3, 4, 5 순으로 커밋을 했다면 3의 커밋지점으로 돌아가고 스테이지 영역은 비어있고, 워킹디렉터리는 그대로이다.</p><p id="4327258b-d1e0-4f27-9f9c-f345ce00dddc" class="">git reset --hard HEAD~2 : 1, 2, 3, 4, 5 순으로 커밋을 했다면 3의 커밋지점으로 돌아가고 스테이지 영역은 비어있고, 워킹디렉터리도 3을 커밋한 시점으로 돌아간다.</p><ol type="1" id="64da8937-c774-4b2c-a543-4891072e5d37" class="numbered-list" start="1"><li>ex) git reset --soft HEAD~2 git commit -am &quot;최근 3개 커밋을 합침&quot;</li></ol><p id="fc58cb29-2b45-4c6f-861e-94e6ba564f01" class="">git reset menu.htm : menu.htm에 대한 stage 상태를 제거(unstage)</p><p id="f108109b-706e-48f0-a22e-a98957cdcda0" class="">git reset --hard HEAD : 워킹 디렉터리와 스테이지 상태를 모두 제거하여 마지막 커밋 상태로 되돌림</p><p id="afededff-8893-4f88-9a8d-f3aee2d4b8e4" class="">git reset --merge HEAD~ : 직전에 병합한 커밋을 리셋하여 취소함</p><p id="c47eadb7-1d37-4d85-bb4d-f39aae67f1f9" class="">⇒ 협업하는 경우에는 reset을 하지 않음</p><p id="d1a84d46-cd57-4d9f-9d93-405b89e16b8f" class="">git revert HEAD : 현재 커밋을 취소하는 커밋 생성</p><p id="156e5cae-2ba0-4c64-ac03-e8d9c21f20ea" class="">git revert --mainline 1 84b6618 : 84b6618 커밋에서 병합이 이루어졌다고 가정함. 파생 브랜치와 병합됨에 의해 변경된 사항을 취소함.</p><p id="30f3196f-d145-422c-a14f-3118202ae1b8" class="">git tag : 태그의 목록을 출력</p><p id="1475d64a-0ff6-44a1-9113-bf3bd14e0226" class="">git tag -a 1.0.0 : HEAD에 annotated tag 1.0.0을 붙임</p><p id="4b85161e-b964-4513-a6ae-94a09831f93b" class="">git tag -a 1.1.0 -m &quot;simple tag 1.1.0&quot; : annotated tag message까지 같이 입력함</p><p id="37942e2b-2cba-4e82-a448-e608dfe3127d" class="">git tag -d 1.1.0 : 1.1.0 태그를 삭제함</p><p id="f4f1f68b-219f-4feb-932c-68f9920e965e" class="">git show 1.0.0 : 해당 태그와 그 커밋 정보를 출력</p><p id="ad99eb80-d4ec-494c-8cd7-71b35b768fe4" class="">git tag 2.0.0 : lightweight tag 2.0.0을 생성. 태그 메시지는 입력할 수 없음.</p><p id="458a57fb-c990-4e79-a7f2-ea2b942a6b7d" class="">git tag 1.1.2 80f8890 : 커밋 아이디가 80f8890인 커밋에 1.1.2 태그를 붙임</p><p id="19626bd7-5106-421e-997a-60b91b6860c4" class="">git checkout 1.0.0 : 1.0.0 태그가 붙은 커밋으로 체크아웃</p><p id="a318cced-bb37-4a4c-b92d-ae8254e40081" class="">git checkout -b fix 1.0.0 : 1.0.0 태그가 붙은 커밋을 기준으로 fix 브랜치를 생성한 후 체크아웃함</p><p id="b2635b65-6dc5-47c6-bb84-6bb60da76d9b" class="">git push origin 1.0.0 : 원격저장소에 1.0.0 태그를 전송 (push만으로는 태그전송이 안됨)</p><p id="32e0fe02-2950-4fcf-a43d-601d5954edbc" class="">git push origin --tags : 원격저장소에 모든 태그를 전송</p><p id="f1c49b47-8629-4d6e-bcfd-0d8c4403a04b" class="">git push --delete origin 2.0.0 : 원격저장소에서 2.0.0 태그를 삭제</p><p id="b3fc81a7-9047-4248-a1c4-26bc5ecfd0d1" class="">git push origin 1.1.2:3.0.0 ⇒ 로컬 태그 1.1.2를 원격 저장소 태그 3.0.0로 전송</p><p id="ccfe636f-4ff2-431d-9070-95b3ea234b79" class="">info@DESKTOP sj /e/parent (master)</p><p id="8146752c-328c-46a2-9609-7e316599f80f" class="">git submodule add <span style="border-bottom:0.05em solid">https://github.com/suhan8984/child.git</span> child</p><p id="ae3fa6c7-9f73-47e7-a835-53bbb4eacffe" class="">: 원격저장소 child.git을 서브 저장소로 설정하여 폴더명이 child인 서브 폴더 형태로 취급</p><p id="1b80b40e-cf1c-4250-8ea0-720e57ae27a4" class="">git add .gitmodules</p><p id="f5231490-0cab-4aa6-92c2-ad62588294d1" class="">git commit -m &quot;add submodule&quot;</p><figure id="ba96abb2-d54a-4ed8-b3bc-53916aca60d4" class="image"><a href="image.png"><img style="width:528px" src="image.png"/></a></figure><p id="2f25f82c-5175-4a5e-ab07-0e5fe1a56012" class="">서브모듈에서 커밋할 사항이 있으면 child, parent 순서로 커밋해야함</p><p id="937a434e-5cf7-4a37-9b3a-cb6efb779cc0" class="">local 서브모듈 child에서 수정사항을 커밋해도 local child 원본과 remote child 모두 변하지 않는다. 세 child는 기본적으로 독립적이고, push, pull에 의해서 서로 진행상황을 업데이트할 뿐이다.</p><p id="b6e5e9fe-e9b2-4554-a886-f6244b8a039d" class="">git submodule update : 부모저장소을 clone하거나 pull 한다고 해서 서브모듈의 정보를 가져올 수 있는 것은 아님. 따라서 서브모듈을 업데이트하도록 명령해야함.</p><p id="d955ad9a-aa06-4ccb-b173-220468ee3444" class="">git show d0943cf : 해당 해시값에 해당하는 커밋 로그를 출력</p><p id="20e16305-4259-4c81-aa5d-2acde061e134" class="">git rev-parse master : master가 참조하는 해시값(Head의 해쉬값)을 조회</p><p id="2dfb8456-6e06-4891-a2c5-f9620e5799c8" class="">git reflog : 참조 기록 확인</p><p id="060b384d-3578-4fc6-b11f-bbf8b9e72f78" class="">git blame index.htm : index.htm 파일을 수정한 커밋에 대하여 해시값, 작성자, 수정한 코드, 수정한 시간 등을 출력함</p><p id="7eca31b9-e7d7-49fa-9b5d-8981a8164ce5" class="">git blame -L 34, 56 index.htm : index.htm의 34~56번째 줄을 수정한 커밋 히스토리 출력</p><p id="f21d83b5-cb76-497d-ab07-3e29f54fe01b" class="">git replace c3502a6 8681d97 : 두 커밋을 연결함 (두 커밋 해시값이 동일한 것으로 간주)</p><p id="d7750296-02f6-4427-886d-61fca371ed67" class="">git prune --dry-run --verbose : 고립된 객체를 삭제하려고 하는데 실행하지는 않고 작업할 내역만 출력</p><p id="c9e31cf4-54c4-4439-961f-1b0cc4fc578f" class="">git reflog expire --expire=now --expire-unreachable=now --all</p><p id="bb57d70c-ecfe-42fc-9610-b8ad61049996" class="">: 고립될만한 객체를 실제로 고립시키기 위해 reflog 기록에서 연결 고리 링크를 제거</p><p id="b6031b19-a999-43c9-9334-00b11a7df895" class="">git prune --expire now -v : 고립 객체 삭제</p><p id="f8006a5a-2379-4896-aae1-2253ed7959bf" class="">git config rerere.enabled true : rerere를 활성화</p><p id="f8b490e0-8879-4b3e-b7b1-2bdee7b31509" class="">⇒ rerere는 이전의 충돌 해결 작업을 기억하고 이후에 유사한 문제가 발생하면 이를 다시 적용함</p><p id="2e509a12-f602-478f-92d8-d956fea96102" class="">git rerere status : 충돌을 일으킨 파일의 목록을 출력</p><p id="2172b235-0f65-4c43-9b9a-cb74c5327305" class="">git rerere diff : 충돌한 내용의 차이점을 출력</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

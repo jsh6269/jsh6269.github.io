@@ -17,17 +17,22 @@ const HomePage = () => {
                 <Link to={`/list/${category}`}>{category}</Link>
               </h2>
               <ul className="mt-[2px] space-y-2">
-                {items.slice(0, 9).map((item) => (
-                  <li
-                    key={item.id}
-                    className="flex justify-between text-gray-700"
-                  >
-                    <Link to={`/post/${category}/${item.id}`}>
-                      {item.title}
-                    </Link>
-                    <span>{item.date}</span>
-                  </li>
-                ))}
+                {items
+                  .slice(-9)
+                  .reverse()
+                  .map((item) => (
+                    <li
+                      key={item.id}
+                      className="flex justify-between text-gray-700"
+                    >
+                      <Link to={`/post/${category}/${item.id}`}>
+                        {item.title.length > 20
+                          ? `${item.title.slice(0, 20)} ...`
+                          : item.title}{" "}
+                      </Link>
+                      <span>{item.date}</span>
+                    </li>
+                  ))}
               </ul>
             </div>
           ))}
