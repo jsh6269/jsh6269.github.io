@@ -33,7 +33,7 @@ const NotionPage = () => {
       .catch((error) => {
         console.error("Error fetching the HTML file:", error);
       });
-  }, []);
+  }, [BASE_URL]);
 
   return (
     <root.div className="mb-12 mt-6 mx-8">
