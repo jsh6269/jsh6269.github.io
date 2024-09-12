@@ -11,7 +11,7 @@ const Aside = () => {
   const tabs = Object.keys(postTree);
 
   return (
-    <div className="w-[290px] m-[30px] relative">
+    <div className="w-[290px] m-[30px] relative hidden sm:inline">
       <section className="mb-[20px]" style={background}>
         <div className="flex flex-col items-center p-[20px]">
           <img src={profile} alt="profile" className="w-[200px]" />
@@ -25,7 +25,7 @@ const Aside = () => {
           </p>
         </div>
       </section>
-      <section style={background} className="min-h-[400px]">
+      <section style={background} className="sm:min-h-[400px]">
         <ol className="py-[20px]">
           {tabs.map((key) => (
             <li className="ml-[40px] py-[2px]" key={key}>

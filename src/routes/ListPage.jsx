@@ -40,15 +40,19 @@ const ListPage = () => {
   };
 
   return (
-    <div className="px-6 py-3">
-      <h2 className="text-2xl font-semibold mt-8 mb-5 mx-1">{category}</h2>
-      <table className="w-[950px] mb-10 border-collapse">
+    <div className="sm:px-6 py-3">
+      <h2 className="px-[8px] sm:px-0 text-2xl font-semibold mt-8 mb-5 mx-1">
+        {category}
+      </h2>
+      <table className="sm:w-[950px] mb-10 border-collapse">
         <thead>
           <tr className="bg-gray-200">
-            <th className="border px-4 py-2 w-[100px]">No</th>
+            <th className="border px-4 py-2 sm:w-[100px]">No</th>
             <th className="border px-4 py-2 w-[550px]">제목</th>
             <th className="border px-4 py-2 w-[200px]">작성일</th>
-            <th className="border px-4 py-2 w-[100px]">조회수</th>
+            <th className="hidden sm:inline-block border px-4 py-2 w-[100px]">
+              조회수
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -62,7 +66,7 @@ const ListPage = () => {
                 <Link to={`/post/${category}/${post.id}`}>{post.title}</Link>
               </td>
               <td className="border px-4 py-2">{post.date}</td>
-              <td className="border px-4 py-2">0</td>
+              <td className="hidden sm:table-cell border px-4 py-2">0</td>
             </tr>
           ))}
         </tbody>

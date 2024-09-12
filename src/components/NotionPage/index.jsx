@@ -36,7 +36,7 @@ const NotionPage = () => {
   }, [BASE_URL]);
 
   return (
-    <root.div className="mb-12 mt-6 mx-8">
+    <root.div className="mb-12 mt-6 mx-[14px] sm:mx-8">
       <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
     </root.div>
   );

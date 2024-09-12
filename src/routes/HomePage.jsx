@@ -4,14 +4,19 @@ import data from "../tree.json";
 // 홈화면
 const HomePage = () => {
   return (
-    <div className="bg-gray-100 flex items-start justify-center mt-[30px] mb-[50px] ml-[5px]">
-      <div className="grid grid-cols-2 gap-[40px] px-[48px] py-[30px] w-[1000px]">
+    <div className="bg-gray-100 flex items-start justify-center sm:mt-[30px] sm:mb-[50px] sm:ml-[5px]">
+      <div className="grid sm:grid-cols-2 grid-cols-1 gap-[40px] px-[20px] pt-[25px] sm:pt-[38px] pb-[50px] sm:px-[48px] sm:py-[30px] w-screen sm:w-[1000px]">
+        <div className="flex gap-5 sm:hidden">
+          {Object.entries(data).map(([category, _]) => (
+            <Link to={`/list/${category}`}>{category}</Link>
+          ))}
+        </div>
         {Object.entries(data)
           .slice(0, 4)
           .map(([category, items]) => (
             <div
               key={category}
-              className="bg-white opacity-80 shadow-lg rounded-lg p-6 flex flex-col w-[390px] m-[15px] h-[390px] ml-[19px]"
+              className="bg-white opacity-80 shadow-lg rounded-lg p-6 flex flex-col sm:w-[390px] sm:m-[15px] sm:h-[390px] sm:ml-[19px]"
             >
               <h2 className="text-xl font-semibold mb-4">
                 <Link to={`/list/${category}`}>{category}</Link>
