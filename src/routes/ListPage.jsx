@@ -49,7 +49,7 @@ const ListPage = () => {
           <tr className="bg-gray-200">
             <th className="border px-4 py-2 sm:w-[100px]">No</th>
             <th className="border px-4 py-2 w-[550px]">제목</th>
-            <th className="border px-4 py-2 w-[200px]">작성일</th>
+            <th className="border px-4 py-2 w-[210px] sm:w-[200px]">작성일</th>
             <th className="hidden sm:inline-block border px-4 py-2 w-[100px]">
               조회수
             </th>

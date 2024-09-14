@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header />
-        <div className="w-screen sm:w-[1400px] sm:min-h-[1000px] bg-[#EFEFEF] relative flex">
+        <div className="w-screen sm:w-[1400px] min-h-[460px] sm:min-h-[1000px] bg-[#EFEFEF] relative flex">
           <Aside />
           <Routes>
             <Route path="/" element={<HomePage />} />
