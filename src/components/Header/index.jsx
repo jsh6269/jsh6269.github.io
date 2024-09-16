@@ -23,7 +23,9 @@ const Header = () => {
       <nav>
         <ol className="flex space-x-6">
           <li className="text-[#FFFFFF] ml-[32px] sm:ml-[50px] text-xl">
-            <Link to="/">Home</Link>
+            <Link to="/" onClick={() => window.scrollTo(0, 0)}>
+              Home
+            </Link>
           </li>
           <li className="text-[#FFFFFF] text-xl">
             <a href="https://github.com/jsh6269">GitHub</a>

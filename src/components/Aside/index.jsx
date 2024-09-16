@@ -29,11 +29,15 @@ const Aside = () => {
         <ol className="py-[20px]">
           {tabs.map((key) => (
             <li className="ml-[40px] py-[2px]" key={key}>
-              <Link to={`list/${key}`}>{key}</Link>
+              <Link to={`list/${key}`} onClick={() => window.scrollTo(0, 0)}>
+                {key}
+              </Link>
             </li>
           ))}
           <li className="ml-[40px] py-[2px]">
-            <Link to="guests">Guests</Link>
+            <Link to="guests" onClick={() => window.scrollTo(0, 0)}>
+              Guests
+            </Link>
           </li>
         </ol>
       </section>

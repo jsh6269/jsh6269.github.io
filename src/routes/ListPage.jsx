@@ -42,7 +42,9 @@ const ListPage = () => {
   return (
     <div className="sm:px-6 py-3">
       <h2 className="px-[8px] sm:px-0 text-2xl font-semibold mt-4 sm:mt-8 mb-5 mx-1">
-        {category}
+        <Link to={`/list/${category}`} onClick={() => window.scrollTo(0, 0)}>
+          {category}
+        </Link>
       </h2>
       <table className="sm:w-[950px] mb-10 border-collapse">
         <thead>
