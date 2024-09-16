@@ -41,7 +41,7 @@ const ListPage = () => {
 
   return (
     <div className="sm:px-6 py-3">
-      <h2 className="px-[8px] sm:px-0 text-2xl font-semibold mt-8 mb-5 mx-1">
+      <h2 className="px-[8px] sm:px-0 text-2xl font-semibold mt-4 sm:mt-8 mb-5 mx-1">
         {category}
       </h2>
       <table className="sm:w-[950px] mb-10 border-collapse">

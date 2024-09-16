@@ -5,10 +5,11 @@ import data from "../tree.json";
 const HomePage = () => {
   return (
     <div className="bg-gray-100 flex flex-col items-start justify-center sm:mt-[30px] sm:mb-[50px] sm:ml-[5px]">
-      <div className="flex overflow-x-auto whitespace-nowrap gap-5 sm:hidden bg-slate-300 w-screen py-5 px-5 mb-2">
+      <div className="flex overflow-x-auto whitespace-nowrap gap-[17px] sm:hidden bg-slate-300 w-screen py-5 px-5 mb-2">
         {Object.entries(data).map(([category, _]) => (
           <Link to={`/list/${category}`}>{category}</Link>
         ))}
+        <Link to={`/guests`}>Guests</Link>
       </div>
       <div className="grid sm:grid-cols-2 grid-cols-1 gap-[40px] px-[20px] pt-[25px] sm:pt-[38px] pb-[50px] sm:px-[48px] sm:py-[30px] w-screen sm:w-[1000px]">
         {Object.entries(data)

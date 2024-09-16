@@ -32,6 +32,9 @@ const Aside = () => {
               <Link to={`list/${key}`}>{key}</Link>
             </li>
           ))}
+          <li className="ml-[40px] py-[2px]">
+            <Link to="guests">Guests</Link>
+          </li>
         </ol>
       </section>
     </div>

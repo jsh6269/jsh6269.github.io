@@ -5,6 +5,7 @@ import Aside from "./components/Aside";
 import HomePage from "./routes/HomePage";
 import PostPage from "./routes/PostPage";
 import ListPage from "./routes/ListPage";
+import GuestPage from "./routes/GuestPage";
 import "./App.css";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/post/:category/:num" element={<PostPage />} />
             <Route path="/list/:category" element={<ListPage />} />
+            <Route path="/guests" element={<GuestPage />} />
           </Routes>
         </div>
         <Footer />
