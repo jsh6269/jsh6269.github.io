@@ -1,6 +1,5 @@
 import React from "react";
 import bgTile from "../../assets/images/bg.gif";
-import profile from "../../assets/images/profile.jpg";
 import postTree from "../../tree.json";
 import { Link } from "react-router-dom";
 
@@ -14,7 +13,11 @@ const Aside = () => {
     <div className="w-[290px] m-[30px] relative hidden sm:inline">
       <section className="mb-[20px]" style={background}>
         <div className="flex flex-col items-center p-[20px]">
-          <img src={profile} alt="profile" className="w-[200px]" />
+          <img
+            src="https://jsh6269.github.io/profile.jpg"
+            alt="profile"
+            className="w-[200px]"
+          />
         </div>
         <div className="ml-[48px] pb-[40px]">
           <h1 className="text-lg mb-[5px]">장수한 (jsh6269)</h1>
