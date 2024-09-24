@@ -46,12 +46,12 @@ const ListPage = () => {
           {category}
         </Link>
       </h2>
-      <table className="sm:w-[950px] mb-10 border-collapse">
+      <table className="w-screen sm:w-[950px] mb-10 border-collapse">
         <thead>
           <tr className="bg-gray-200">
-            <th className="border px-4 py-2 sm:w-[100px]">No</th>
-            <th className="border px-4 py-2 w-[550px]">제목</th>
-            <th className="border px-4 py-2 w-[210px] sm:w-[200px]">작성일</th>
+            <th className="border px-4 py-2 w-[56px] sm:w-[100px]">No</th>
+            <th className="border px-4 py-2 sm:w-[550px]">제목</th>
+            <th className="border px-4 py-2 w-[125px] sm:w-[200px]">작성일</th>
             <th className="hidden sm:inline-block border px-4 py-2 w-[100px]">
               비고
             </th>
