@@ -84,4 +84,10 @@
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
+    <url>
+        <loc>https://jsh6269.github.io/post/Technology/5/</loc>
+        <lastmod>2024-09-24</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
 </urlset>
