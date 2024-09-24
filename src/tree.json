@@ -40,6 +40,11 @@
             "id": "3",
             "title": "Git 명령어",
             "date": "2024-09-11"
+        },
+        {
+            "id": "4",
+            "title": "Authorization Technique",
+            "date": "2024-09-24"
         }
     ]
 }
