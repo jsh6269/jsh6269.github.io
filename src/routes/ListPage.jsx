@@ -53,7 +53,7 @@ const ListPage = () => {
             <th className="border px-4 py-2 w-[550px]">제목</th>
             <th className="border px-4 py-2 w-[210px] sm:w-[200px]">작성일</th>
             <th className="hidden sm:inline-block border px-4 py-2 w-[100px]">
-              조회수
+              비고
             </th>
           </tr>
         </thead>
@@ -63,12 +63,14 @@ const ListPage = () => {
               key={post.id}
               className="odd:bg-white even:bg-gray-50 hover:bg-gray-100"
             >
-              <td className="border px-4 py-2">{post.id}</td>
+              <td className="border px-4 py-2 text-center">{post.id}</td>
               <td className="border px-4 py-2">
                 <Link to={`/post/${category}/${post.id}`}>{post.title}</Link>
               </td>
-              <td className="border px-4 py-2">{post.date}</td>
-              <td className="hidden sm:table-cell border px-4 py-2">0</td>
+              <td className="border px-4 py-2 text-center">{post.date}</td>
+              <td className="hidden sm:table-cell border px-4 py-2 text-center">
+                -
+              </td>
             </tr>
           ))}
         </tbody>
