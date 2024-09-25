@@ -9,13 +9,13 @@
     "IT Project": [
         {
             "id": "1",
-            "title": "멋사 2학기 계획",
-            "date": "2024-09-06"
+            "title": "CareWise: 의복 세탁/관리법 제공 서비스",
+            "date": "2024-08-04"
         },
         {
             "id": "2",
-            "title": "CareWise: 의복 세탁/관리법 제공 서비스",
-            "date": "2024-08-04"
+            "title": "멋사 2학기 계획",
+            "date": "2024-09-06"
         }
     ],
     "Random": [
@@ -28,8 +28,8 @@
     "Technology": [
         {
             "id": "1",
-            "title": "RTSP & Packet Proxy",
-            "date": "2024-09-01"
+            "title": "Git 명령어",
+            "date": "2023-02-24"
         },
         {
             "id": "2",
@@ -38,8 +38,8 @@
         },
         {
             "id": "3",
-            "title": "Git 명령어",
-            "date": "2023-02-24"
+            "title": "RTSP & Packet Proxy",
+            "date": "2024-09-01"
         },
         {
             "id": "4",
