@@ -28,11 +28,14 @@ npm start
 ## 배포
 **github pages** 사용
 ```bash
+# migrate 자동화
+pre-commit install
+
 git add .
 git commit
 git push origin main  
 
-npm run build  
-npm run deploy  
+# main에 push하면 actions가 자동으로 배포
+# npm run build  
+# npm run deploy  
 ```
-혹은 `./deploy.sh`로도 간단하게 배포 가능
