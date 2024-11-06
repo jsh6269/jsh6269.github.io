@@ -55,6 +55,11 @@
             "id": "5",
             "title": "Flux Architecture & Redux",
             "date": "2024-09-24"
+        },
+        {
+            "id": "6",
+            "title": "HTTP, WebSocket protocol & Django Channels, React useWebSocket",
+            "date": "2024-11-06"
         }
     ]
 }
