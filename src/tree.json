@@ -60,6 +60,11 @@
             "id": "6",
             "title": "HTTP, WebSocket protocol & Django Channels, React useWebSocket",
             "date": "2024-11-06"
+        },
+        {
+            "id": "7",
+            "title": "Likelion sem3 hw",
+            "date": "2024-11-17"
         }
     ]
 }
